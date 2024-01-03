@@ -1,13 +1,13 @@
 <template>
     <div class="status-board">
         <div class="upper-container">
-            <TeamStatus class="team-status" color="yellow" :team="refereeMessage.yellow"/>
+            <TeamStatus class="team-status" disp_side="left" color="yellow" :team="refereeMessage.yellow"/>
 
             <div class="match-status-container">
                 <MatchStatus/>
             </div>
 
-            <TeamStatus class="team-status" color="blue" :team="refereeMessage.blue"/>
+            <TeamStatus class="team-status" disp_side="right" color="blue" :team="refereeMessage.blue"/>
         </div>
 
         <hr class="upper-lower-separator">
@@ -40,7 +40,8 @@
 
     .upper-container {
         display: flex;
-        align-items: stretch;
+        justify-content: center;
+        /* align-items: stretch; */
     }
 
     .lower-container {
@@ -54,7 +55,7 @@
 
     .match-status-container {
         flex-grow: 0.4;
-        flex-basis: 40%;
+        flex-basis: 10%;
     }
 
     .team-status {

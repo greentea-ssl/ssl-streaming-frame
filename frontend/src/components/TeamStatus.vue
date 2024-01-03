@@ -1,5 +1,5 @@
 <template>
-    <div class="teamStatus" :class="{'bot-substitution-intent': botSubstitutionIntent}">
+    <div class="teamStatus" :class="{'bot-substitution-intent': botSubstitutionIntent, 'disp_left': disp_side === 'left', 'disp_right': disp_side === 'right'}">
         
         <img :src="logoUrl" alt="team logo" class="team-logo"/>
         
@@ -39,6 +39,7 @@
         components: {BotCount, Card, CardTimer},
         props: {
             color: String,
+            disp_side: String,
             team: Referee.ITeamInfo,
         },
         computed: {
@@ -64,9 +65,20 @@
 
     .teamStatus {
         transition: background-color 500ms ease;
-        display: flex;           /* Flex コンテナとして設定 */
-        flex-direction: row;     /* 横方向に要素を並べる */
-        align-items: center;     /* 垂直方向の中央揃え */
+        display: flex;
+        /* flex-direction: row; */
+        align-items: center;
+        margin: auto;
+        border-style: solid;
+        border-color: rgb(101, 100, 100);
+    }
+
+    .disp_left {
+        flex-direction: row-reverse;
+    }
+
+    .disp_right {
+        flex-direction: row;
     }
 
     .teamNameAndCards {
@@ -80,20 +92,20 @@
     }
 
     .team-name {
-        margin-top: 12px;
-        margin-bottom: 12px;
-        font-size: 1em;
+        /* margin-top: 12px;
+        margin-bottom: 12px; */
+        font-size: 0.5em;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
     }
 
     .team-logo {
-        max-width: 40%;
+        max-width: 20%;
     }
 
     .cardTimers {
-        margin-top: 6px;
+        /* margin-top: 6px; */
         display: block;
     }
 

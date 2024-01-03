@@ -1,12 +1,23 @@
 <template>
     <div class="match-status">
-        <div>
-            <div :class="{'highlight-command': true, 'stop-command': isStop, 'halt-command': isHalt, 'robot-substitution-blue': isRobotSubstitutionBlue, 'robot-substitution-yellow': isRobotSubstitutionYellow, 'robot-substitution-both': isRobotSubstitutionBoth}">
-            <div class="stage">{{stage}}</div>
+        <div class="stage-score-time">
 
-            <span class="score">
-                {{refereeMessage.yellow.score}} : {{refereeMessage.blue.score}}
-            </span>
+            <span class="score"> {{refereeMessage.yellow.score}} </span>
+
+            <div>
+                <div class="stage">{{stage}}</div>
+                
+                <div class="time-container"
+                    v-format-us-duration="refereeMessage.stageTimeLeft"
+                    :class="{'time-positive': refereeMessage.stageTimeLeft >= 0, 'time-negative': refereeMessage.stageTimeLeft < 0}">
+                </div>
+            </div>
+
+            <span class="score"> {{refereeMessage.blue.score}} </span>
+    
+        </div>
+
+        <div :class="{'highlight-command': true, 'stop-command': isStop, 'halt-command': isHalt, 'robot-substitution-blue': isRobotSubstitutionBlue, 'robot-substitution-yellow': isRobotSubstitutionYellow, 'robot-substitution-both': isRobotSubstitutionBoth}">
 
             <div class="command" :class="{'team-yellow': commandForYellow, 'team-blue': commandForBlue}">
                 {{gameState}}
@@ -17,28 +28,21 @@
                     (<span v-format-us-duration="timeoutTime"></span>)
                 </span>
             </div>
-            </div>
-
-            <hr class="separator"/>
-
-            <PowerPlay/>
-
         </div>
-        <div class="time-container"
-             v-format-us-duration="refereeMessage.stageTimeLeft"
-             :class="{'time-positive': refereeMessage.stageTimeLeft >= 0, 'time-negative': refereeMessage.stageTimeLeft < 0}">
-        </div>
+
+        <!-- <PowerPlay/> -->
+
     </div>
 </template>
 
 <script>
 import {Referee, Team} from "@/sslProto"
     import {mapStageToText, mapCommandToText} from "@/texts";
-    import PowerPlay from "./PowerPlay";
+    // import PowerPlay from "./PowerPlay";
 
     export default {
         name: "MatchStatus",
-        components: {PowerPlay},
+        // components: {PowerPlay},
         computed: {
             refereeMessage() {
                 return this.$store.state.refereeMsg;
@@ -134,16 +138,25 @@ import {Referee, Team} from "@/sslProto"
     .match-status {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         height: 100%;
-        align-items: center;
+        align-items:center;
+        /* margin: auto; */
+        border-style: solid;
+        border-color: rgb(101, 100, 100);
+    }
+
+    .stage-score-time {
+        display: flex;
+        flex-direction: row;
     }
 
     .time-container {
         border-style: dashed;
         display: inline-block;
+        font-size: 0.7em;
         padding: 0.1em;
-        margin: 0.1em;
+        /* margin: 0.1em; */
     }
 
     .time-positive {
@@ -157,28 +170,33 @@ import {Referee, Team} from "@/sslProto"
         background-color: rgba(255, 0, 0, 0.1);
     }
 
-    .separator {
-        margin: 0.2em;
+    .stage {
+        white-space: nowrap;
+        padding: 0.1em;
+        font-size: 0.3em;
     }
 
     .score {
         white-space: nowrap;
         width: 100%;
-        font-size: 3em;
-    }
-
-    .stage {
-        margin-top: 1vh;
+        font-size: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-style: solid;
+        border-color: rgb(101, 100, 100);
     }
 
     .command {
-        margin-top: 3vmin;
+        /* margin-top: 3vmin; */
+        font-size: 0.5em;
+        /* padding: 0.2em; */
     }
 
     .highlight-command {
         transition: background-color 500ms ease;
-        border-radius: .5em;
-        padding: 0.2em 0.1em 0.1em;
+        border-radius: .2em;
+        padding: 0.1em 0.1em 0.1em;
         margin-top: 0.1em;
     }
 
