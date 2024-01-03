@@ -25,7 +25,7 @@ export default {
     border-radius: 0.2em;
     width: 1.5em;
     height: 2em;
-    font-size: 0.6em;
+    font-size: 0.3em;
     display: table-cell;
     vertical-align: middle;
 }

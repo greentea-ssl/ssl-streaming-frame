@@ -23,7 +23,9 @@ export default {
 
 .bot-count {
     margin: 0.1em;
-    font-size: 0.6em;
+    font-size: 0.3em;
+    display: flex;
+    align-items: center;
 }
 
 .element {
