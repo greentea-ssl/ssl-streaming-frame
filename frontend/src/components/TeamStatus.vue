@@ -1,23 +1,29 @@
 <template>
     <div class="teamStatus" :class="{'bot-substitution-intent': botSubstitutionIntent}">
-        <div :class="{'team-yellow': color === 'yellow', 'team-blue': color === 'blue'}" class="team-name">
-            <div class="team-name-text">{{team.name}}</div>
-        </div>
-
+        
         <img :src="logoUrl" alt="team logo" class="team-logo"/>
+        
+        <div class="teamNameAndCards">
 
-        <div class="cards">
-            <Card class="card" color="red" :num-cards="team.redCards"/>
-            <Card class="card" color="yellow" :num-cards="team.yellowCards"/>
-            <Card class="card" color="foul" :num-cards="team.foulCounter"/>
-            <BotCount class="card" :num-bots="team.maxAllowedBots"/>
-        </div>
+            <div :class="{'team-yellow': color === 'yellow', 'team-blue': color === 'blue'}" class="team-name">
+                <div class="team-name-text">{{team.name}}</div>
+            </div>
+            
+            <div class="cards">
+                <Card class="card" color="red" :num-cards="team.redCards"/>
+                <Card class="card" color="yellow" :num-cards="team.yellowCards"/>
+                <Card class="card" color="foul" :num-cards="team.foulCounter"/>
+                <BotCount class="card" :num-bots="team.maxAllowedBots"/>
+            </div>
 
-        <div class="cardTimers">
-                <span v-for="(cardTime, index) in team.yellowCardTimes.slice(0,3)" :key="index">
-                <CardTimer :cardTimer="cardTime" />
-                </span>
+            <div class="cardTimers">
+                    <span v-for="(cardTime, index) in team.yellowCardTimes.slice(0,3)" :key="index">
+                    <CardTimer :cardTimer="cardTime" />
+                    </span>
+            </div>
+
         </div>
+        
     </div>
 </template>
 
@@ -58,6 +64,15 @@
 
     .teamStatus {
         transition: background-color 500ms ease;
+        display: flex;           /* Flex コンテナとして設定 */
+        flex-direction: row;     /* 横方向に要素を並べる */
+        align-items: center;     /* 垂直方向の中央揃え */
+    }
+
+    .teamNameAndCards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .bot-substitution-intent {
@@ -74,7 +89,7 @@
     }
 
     .team-logo {
-        max-width: 60%;
+        max-width: 40%;
     }
 
     .cardTimers {
