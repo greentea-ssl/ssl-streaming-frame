@@ -23,6 +23,6 @@
         text-align: center;
         color: aliceblue;
         height: 100%;
-        background-color: #353535;
+        background-color: #00FF00;
     }
 </style>
