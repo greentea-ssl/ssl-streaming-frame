@@ -4,7 +4,7 @@
 
             <span class="score"> {{refereeMessage.yellow.score}} </span>
 
-            <div>
+            <div class="stage-time">
                 <div class="stage">{{stage}}</div>
                 
                 <div class="time-container"
@@ -139,24 +139,29 @@ import {Referee, Team} from "@/sslProto"
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 100%;
+        width: 100%;
         align-items:center;
         /* margin: auto; */
-        border-style: solid;
-        border-color: rgb(101, 100, 100);
     }
 
     .stage-score-time {
         display: flex;
         flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .stage-time {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .time-container {
         border-style: dashed;
         display: inline-block;
-        font-size: 0.7em;
+        font-size: 0.5em;
         padding: 0.1em;
-        /* margin: 0.1em; */
+        width: fit-content;
     }
 
     .time-positive {
@@ -173,31 +178,35 @@ import {Referee, Team} from "@/sslProto"
     .stage {
         white-space: nowrap;
         padding: 0.1em;
+        margin-top: 0.1em;
         font-size: 0.3em;
+        /* border-style: solid;
+        border-color: black; */
     }
 
     .score {
         white-space: nowrap;
-        width: 100%;
+        width: 1em;
+        height: 1em;
         font-size: 1em;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-style: solid;
-        border-color: rgb(101, 100, 100);
+        /* border-style: solid;
+        border-color: black; */
     }
 
     .command {
-        /* margin-top: 3vmin; */
-        font-size: 0.5em;
-        /* padding: 0.2em; */
+        font-size: 0.4em;
+        /* border-style: solid;
+        border-color: black; */
     }
 
     .highlight-command {
         transition: background-color 500ms ease;
         border-radius: .2em;
         padding: 0.1em 0.1em 0.1em;
-        margin-top: 0.1em;
+        /* margin-top: 0.1em; */
     }
 
     .highlight-command.stop-command {

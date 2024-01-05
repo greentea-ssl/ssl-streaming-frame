@@ -1,11 +1,9 @@
 <template>
     <div class="teamStatus" :class="{'bot-substitution-intent': botSubstitutionIntent, 'disp_left': disp_side === 'left', 'disp_right': disp_side === 'right'}">
         
-        <img :src="logoUrl" alt="team logo" class="team-logo"/>
-        
-        <div class="teamNameAndCards">
+        <div class="teamNameAndCards" :class="{'team_name_right': disp_side === 'left', 'team_name_left': disp_side === 'right'}">
 
-            <div :class="{'team-yellow': color === 'yellow', 'team-blue': color === 'blue'}" class="team-name">
+            <div class="team-name" :class="{'team-yellow': color === 'yellow', 'team-blue': color === 'blue'}">
                 <div class="team-name-text">{{team.name}}</div>
             </div>
             
@@ -23,6 +21,8 @@
             </div>
 
         </div>
+        
+        <img :src="logoUrl" alt="team logo" class="team-logo"/>
         
     </div>
 </template>
@@ -58,6 +58,8 @@
     .cards {
         display: flex;
         justify-content: center;
+        /* border-style: solid;
+        border-color: black; */
     }
 
     .card {
@@ -68,9 +70,9 @@
         display: flex;
         /* flex-direction: row; */
         align-items: center;
-        margin: auto;
-        border-style: solid;
-        border-color: rgb(101, 100, 100);
+        margin-inline: 0.1em;
+        /* border-style: solid;
+        border-color: black; */
     }
 
     .disp_left {
@@ -84,7 +86,14 @@
     .teamNameAndCards {
         display: flex;
         flex-direction: column;
-        align-items: center;
+    }
+
+    .team_name_left {
+        align-items: flex-start;
+    }
+
+    .team_name_right {
+        align-items: flex-end;
     }
 
     .bot-substitution-intent {
@@ -92,21 +101,25 @@
     }
 
     .team-name {
-        /* margin-top: 12px;
-        margin-bottom: 12px; */
         font-size: 0.5em;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        /* border-style: solid;
+        border-color: black; */
     }
 
+
     .team-logo {
-        max-width: 20%;
+        height: 1.5em;
+        margin-inline: 0.2em;
+        /* border-style: solid;
+        border-color: black; */
     }
 
     .cardTimers {
-        /* margin-top: 6px; */
         display: block;
+        /* border-style: solid;
+        border-color: black; */
     }
 
 </style>

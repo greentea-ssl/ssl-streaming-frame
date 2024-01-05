@@ -1,5 +1,10 @@
 <template>
     <div class="status-board">
+
+        <GameEvents class="lower-container"/>
+        
+        <!-- <hr class="upper-lower-separator"> -->
+
         <div class="upper-container">
             <TeamStatus class="team-status" disp_side="left" color="yellow" :team="refereeMessage.yellow"/>
 
@@ -10,9 +15,7 @@
             <TeamStatus class="team-status" disp_side="right" color="blue" :team="refereeMessage.blue"/>
         </div>
 
-        <hr class="upper-lower-separator">
 
-        <GameEvents class="lower-container"/>
     </div>
 </template>
 
@@ -36,31 +39,41 @@
     .status-board {
         text-align: center;
         font-size: 3.5vw;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .upper-container {
         display: flex;
         justify-content: center;
-        /* align-items: stretch; */
+        width: fit-content;
+        border-radius: 0.2em;
+        background-color: #353535;
     }
 
     .lower-container {
     }
 
     .upper-lower-separator {
-        margin-top: 0.2em;
-        margin-bottom: 0.2em;
+        margin-top: 0.1em;
+        margin-bottom: 0.1em;
         display: block;
+        width: 100%;
     }
 
     .match-status-container {
-        flex-grow: 0.4;
-        flex-basis: 10%;
+        /* flex-grow: 0.4;
+        flex-basis: 8%; */
     }
 
     .team-status {
-        flex-grow: 0.3;
-        flex-basis: 30%;
+        /* flex-grow: 0.3;
+        flex-basis: 30%; */
     }
 
 </style>
