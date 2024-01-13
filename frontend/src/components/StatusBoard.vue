@@ -39,8 +39,6 @@
     .status-board {
         text-align: center;
         font-size: 3.5vw;
-        position: absolute;
-        bottom: 0;
         width: 100%;
         display: flex;
         flex-direction: column;
