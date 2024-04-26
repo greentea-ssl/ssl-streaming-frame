@@ -1,7 +1,5 @@
 <template>
     <div class="status-board">
-
-        <GameEvents class="lower-container"/>
         
         <!-- <hr class="upper-lower-separator"> -->
 
@@ -15,6 +13,7 @@
             <TeamStatus class="team-status" disp_side="right" color="blue" :team="refereeMessage.blue"/>
         </div>
 
+        <GameEvents class="lower-container"/>
 
     </div>
 </template>
